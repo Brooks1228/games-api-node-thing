@@ -1,19 +1,27 @@
 const db = require("../config/db.js");
 
-async function getAllPlatforms(start = 0, limit = 50, like) {
+async function getAllPlatforms(start = 0, limit = 50, gameId) {
   let where = "";
+  let join = "";
   let params = [];
-
-  if (like) {
-    where = " where name like concat('%',?,'%')";
-    params.push(like);
+  /*
+SELECT p.* FROM igdb.platforms p
+inner join game_platform gp on p.platform_id = gp.platform_id
+where gp.game_id = 595;
+*/
+  if (gameId) {
+    join = "inner join game_platform gp on p.platform_id = gp.platform_id";
+    where = " where gp.game_id = ?";
+    params.push(gameId);
   }
 
   params.push(start.toString());
   params.push(limit.toString());
-
+  /*
+    SELECT p.* FROM igdb.platforms p
+where gp.game_id = 595;*/
   const [rows] = await db.execute(
-    `SELECT * FROM platforms ${where} LIMIT ?,?`,
+    `SELECT p.* FROM platforms p ${join} ${where} LIMIT ?,?`,
     params
   );
   return rows;

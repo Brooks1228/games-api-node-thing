@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const platformsController = require("../controllers/platformController.js");
+const coversController = require("../controllers/coverController.js");
 
 /**
  * @swagger
- * /api/platforms:
+ * /api/covers:
  *   get:
  *     tags:
- *        - platforms
- *     summary: Get all platforms (default to limit of 50)
+ *        - covers
+ *     summary: Get all covers (default to limit of 50)
  *     parameters:
  *         - in: query
  *           name: start
@@ -18,24 +18,24 @@ const platformsController = require("../controllers/platformController.js");
  *           name: gameid
  *     responses:
  *       200:
- *         description: A list of platforms
+ *         description: A list of covers
  */
-router.get("/", platformsController.getAllPlatforms);
+router.get("/", coversController.getAllCovers);
 
 /**
  * @swagger
- * /api/platforms/{id}:
+ * /api/covers/{id}:
  *   get:
  *     tags:
- *       - platforms
- *     summary: Get a platform by its id
+ *       - covers
+ *     summary: Get a cover by its id
  *     parameters:
  *        - in: path
  *          name: id
  *     responses:
  *       200:
- *         description: A specific platform
+ *         description: A specific cover
  */
-router.get("/:id", platformsController.getPlatformById);
+router.get("/:id", coversController.getCoversById);
 
 module.exports = router;

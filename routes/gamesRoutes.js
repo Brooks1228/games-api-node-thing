@@ -15,7 +15,7 @@ const gamesController = require("../controllers/gamesController.js");
  *         - in: query
  *           name: limit
  *         - in: query
- *         - name: like
+ *           name: like
  *     responses:
  *       200:
  *         description: A list of games
