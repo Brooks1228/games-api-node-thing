@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+body {
+  background: url(../images/IGDB.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.page-title {
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  font-size: 5em;
+  color: white;
+  text-shadow: 10px 10px black;
+}
+
+#results .card:hover {
+  background-color: rgb(191, 191, 191);
+}

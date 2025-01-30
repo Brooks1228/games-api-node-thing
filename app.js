@@ -1,62 +1,44 @@
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger/swaggerConfig.js");
-
-const PORT = 3001;
+const path = require("path");
+const settings = require("./config/settings.js");
 const app = express();
 
-// games
-const gameRoutes = require("./routes/gamesRoutes");
+const gameRoutes = require("./routes/api/gamesRoutes");
+const platformRoutes = require("./routes/api/platformRoutes");
+const screenshotRoutes = require("./routes/api/screenshotRoutes");
+const charactersRoutes = require("./routes/api/charactersRoutes");
+const genresRoutes = require("./routes/api/genreRoutes");
+const gamemodesRoutes = require("./routes/api/gamemodeRoutes");
+const websiteRoutes = require("./routes/api/websiteRoutes");
+const similarsRoutes = require("./routes/api/similarRoutes");
+const coversRoutes = require("./routes/api/coverRoutes");
 
 app.use("/api/games", gameRoutes);
-
-// platforms
-const platformRoutes = require("./routes/platformRoutes");
-
 app.use("/api/platforms", platformRoutes);
-
-// screenshots
-const screenshotRoutes = require("./routes/screenshotRoutes");
-
 app.use("/api/screenshots", screenshotRoutes);
-
-// characters
-const charactersRoutes = require("./routes/charactersRoutes");
-
 app.use("/api/characters", charactersRoutes);
-
-// genres
-const genresRoutes = require("./routes/genreRoutes");
-
 app.use("/api/genres", genresRoutes);
-
-// game modes
-const gamemodesRoutes = require("./routes/gamemodeRoutes");
-
 app.use("/api/gamemodes", gamemodesRoutes);
-
-// websites
-const websiteRoutes = require("./routes/websiteRoutes");
-
 app.use("/api/websites", websiteRoutes);
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// similar
-const similarsRoutes = require("./routes/similarRoutes");
-
 app.use("/api/similars", similarsRoutes);
-
-// covers
-const coversRoutes = require("./routes/coverRoutes");
-
 app.use("/api/covers", coversRoutes);
 
+const homeRoute = require("./routes/views/webpageRoutes.js");
+app.use("/", homeRoute);
+app.use(express.static(__dirname + "/public"));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 // run
-app.listen(PORT, () => {
-  console.log(`try going to http://localhost:${PORT}/api/games`);
-  console.log(`try going to http://localhost:${PORT}/api/characters`);
-  console.log(`swagger docs available at http://localhost:${PORT}/api-docs`);
+app.listen(settings.PORT, () => {
+  console.log("server running!");
+  console.log(
+    `swagger docs available at ${settings.ROOT}:${settings.PORT}/api-docs`
+  );
 });
 
 // Options for Swagger UI

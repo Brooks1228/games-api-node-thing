@@ -1,12 +1,12 @@
 const db = require("../config/db.js");
 
-async function getAllCovers(start = 0, limit = 50, like) {
+async function getAllCovers(start = 0, limit = 50, gameid) {
   let where = "";
   let params = [];
 
-  if (like) {
-    where = " where name like concat('%',?,'%')";
-    params.push(like);
+  if (gameid) {
+    where = " where game_id = ?";
+    params.push(gameid);
   }
 
   params.push(start.toString());

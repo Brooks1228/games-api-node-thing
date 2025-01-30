@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const coversController = require("../controllers/coverController.js");
+const genresController = require("../../controllers/api/genreController.js");
 
 /**
  * @swagger
- * /api/covers:
+ * /api/genres:
  *   get:
  *     tags:
- *        - covers
- *     summary: Get all covers (default to limit of 50)
+ *        - genres
+ *     summary: Get all genres (default to limit of 50)
  *     parameters:
  *         - in: query
  *           name: start
@@ -18,24 +18,24 @@ const coversController = require("../controllers/coverController.js");
  *           name: gameid
  *     responses:
  *       200:
- *         description: A list of covers
+ *         description: A list of genres
  */
-router.get("/", coversController.getAllCovers);
+router.get("/", genresController.getAllGenres);
 
 /**
  * @swagger
- * /api/covers/{id}:
+ * /api/genres/{id}:
  *   get:
  *     tags:
- *       - covers
- *     summary: Get a cover by its id
+ *       - genres
+ *     summary: Get a genre by its id
  *     parameters:
  *        - in: path
  *          name: id
  *     responses:
  *       200:
- *         description: A specific cover
+ *         description: A specific genre
  */
-router.get("/:id", coversController.getCoversById);
+router.get("/:id", genresController.getGenresById);
 
 module.exports = router;

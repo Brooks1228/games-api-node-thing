@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const platformsController = require("../controllers/platformController.js");
+const similarsController = require("../../controllers/api/similarController.js");
 
 /**
  * @swagger
- * /api/platforms:
+ * /api/similars:
  *   get:
  *     tags:
- *        - platforms
- *     summary: Get all platforms (default to limit of 50)
+ *        - similars
+ *     summary: Get all similars (default to limit of 50)
  *     parameters:
  *         - in: query
  *           name: start
@@ -18,24 +18,24 @@ const platformsController = require("../controllers/platformController.js");
  *           name: gameid
  *     responses:
  *       200:
- *         description: A list of platforms
+ *         description: A list of similars
  */
-router.get("/", platformsController.getAllPlatforms);
+router.get("/", similarsController.getAllSimilars);
 
 /**
  * @swagger
- * /api/platforms/{id}:
+ * /api/similars/{id}:
  *   get:
  *     tags:
- *       - platforms
- *     summary: Get a platform by its id
+ *       - similars
+ *     summary: Get a similar by its id
  *     parameters:
  *        - in: path
  *          name: id
  *     responses:
  *       200:
- *         description: A specific platform
+ *         description: A specific similar
  */
-router.get("/:id", platformsController.getPlatformById);
+router.get("/:id", similarsController.getSimilarsById);
 
 module.exports = router;

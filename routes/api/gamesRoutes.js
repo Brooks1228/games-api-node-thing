@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const gamesController = require("../controllers/gamesController.js");
+const gamesController = require("../../controllers/api/gamesController.js");
 
 /**
  * @swagger

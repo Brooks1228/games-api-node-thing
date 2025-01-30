@@ -1,4 +1,4 @@
-const Similar = require("../models/similar.js");
+const Similar = require("../../models/similar.js");
 
 async function getAllSimilars(req, res) {
   try {

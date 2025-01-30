@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const similarsController = require("../controllers/similarController.js");
+const gamemodesController = require("../../controllers/api/gamemodeController.js");
 
 /**
  * @swagger
- * /api/similars:
+ * /api/gamemodes:
  *   get:
  *     tags:
- *        - similars
- *     summary: Get all similars (default to limit of 50)
+ *        - gamemodes
+ *     summary: Get all gamemodes (default to limit of 50)
  *     parameters:
  *         - in: query
  *           name: start
@@ -18,24 +18,24 @@ const similarsController = require("../controllers/similarController.js");
  *           name: gameid
  *     responses:
  *       200:
- *         description: A list of similars
+ *         description: A list of gamemodes
  */
-router.get("/", similarsController.getAllSimilars);
+router.get("/", gamemodesController.getAllGameModes);
 
 /**
  * @swagger
- * /api/similars/{id}:
+ * /api/gamemodes/{id}:
  *   get:
  *     tags:
- *       - similars
- *     summary: Get a similar by its id
+ *       - gamemodes
+ *     summary: Get a gamemode by its id
  *     parameters:
  *        - in: path
  *          name: id
  *     responses:
  *       200:
- *         description: A specific similar
+ *         description: A specific gamemode
  */
-router.get("/:id", similarsController.getSimilarsById);
+router.get("/:id", gamemodesController.getGameModesById);
 
 module.exports = router;
