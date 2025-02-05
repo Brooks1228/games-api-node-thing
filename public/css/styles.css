@@ -16,3 +16,87 @@ body {
 #results .card:hover {
   background-color: rgb(191, 191, 191);
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  background: url(../images/IGDB.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+#loading {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#gameCharacters {
+  display: flex;
+  flex-wrap: wrap;
+}
+#gameCharacters button {
+  flex: 1 0 20%;
+  margin: 5px;
+}
+.container > .row > div > div {
+  background-color: white;
+  border-radius: 5px;
+}
+#gameSimilar > div:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.container > .row > h1 {
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  font-size: 5em;
+  /* text-decoration: blink; */
+  color: white;
+  text-shadow: 10px 10px black;
+}
+/*
+.row div h2{
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 1.2em;
+}*/
+header {
+  margin-top: 10px;
+}
+.btn {
+  border-radius: 0px 8px 8px 0px;
+}
+.card {
+  padding: 20px;
+}
+.card:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
