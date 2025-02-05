@@ -12,13 +12,13 @@
     <div class="row gx-5">
         <div class="col-md-4">
             <div class="p-2">
-                <img id="gameCover" class="img-fluid"/>
+                <img id="gameCover" src="<%= gameData.cover.replace("t_thumb", "t_720p") %>" class="img-fluid"/>
             </div>
         </div>
         <div class="col-md-8">
             <div class="p-3">
-                <h1 id="gameTitle"></h1>
-                <p id="gameSummary"></p>
+                <h1 id="gameTitle"><%= gameData.name %></h1>
+                <p id="gameSummary"><%= gameData.summary %></p>
             </div>
         </div>
     </div>
@@ -27,7 +27,11 @@
             <div class="p-3">
                 <h2>Genres</h2>
                 <div class="no-data"><p>No data found</p></div>
-                <ul id="gameGenres"></ul>
+                <ul id="gameGenres">
+                    <% for(let genre of gameData.genres) {%>
+                        <li><%=genre.name%></li>
+                    <%}%>
+                </ul>
             </div>        
         </div>
         <div class="col-md-4">
