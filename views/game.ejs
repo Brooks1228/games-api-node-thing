@@ -13,10 +13,13 @@
         <div class="col-md-4">
             <div class="p-2">
                 <img id="gameCover" src="<%= gameData.cover.replace("t_thumb", "t_720p") %>" class="img-fluid"/>
+                <img id="gameCover" src="<%= gameData.cover.replace("t_thumb", "t_720p") %>" class="img-fluid"/>
             </div>
         </div>
         <div class="col-md-8">
             <div class="p-3">
+                <h1 id="gameTitle"><%= gameData.name %></h1>
+                <p id="gameSummary"><%= gameData.summary %></p>
                 <h1 id="gameTitle"><%= gameData.name %></h1>
                 <p id="gameSummary"><%= gameData.summary %></p>
             </div>

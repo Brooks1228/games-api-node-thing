@@ -43,4 +43,14 @@ async function getGameDataFromEndpoint(gameid, endpoint) {
   return values.data;
 }
 
+async function getGameDataFromEndpoint(gameid, endpoint) {
+  let values = await axios.get(
+    `${settings.ROOT}:${settings.PORT}/api/${endpoint}`,
+    {
+      params: { gameid: gameid },
+    }
+  );
+  return values.data;
+}
+
 module.exports = { renderGamePage };
